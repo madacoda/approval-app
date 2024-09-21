@@ -65,7 +65,7 @@ class JobPositionController extends Controller
     {
         $input = $request->validate([
             'name'        => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
 
         $jobPosition         = JobPosition::findOrFail($id);

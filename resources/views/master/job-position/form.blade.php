@@ -31,7 +31,7 @@
                     <div class="card-header">
                         <h5>Form {{ $title }}</h5>
                     </div>
-                    <form action="{{ $entity ? route('master.job-position.update') : route('master.job-position.store') }}" method="POST">
+                    <form action="{{ $entity ? route('master.job-position.update', $entity->id) : route('master.job-position.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="row">
