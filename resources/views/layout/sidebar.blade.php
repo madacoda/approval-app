@@ -19,6 +19,7 @@
             <ul class="sidebar-submenu">
             <li><a href="{{ route('master.approval-category.index') }}">Approval Category</a></li>
             <li><a href="{{ route('master.job-position.index') }}">Job Position</a></li>
+            <li><a href="{{ route('master.unit.index') }}">Unit</a></li>
             </ul>
         </li>
         <li class="sidebar-main-title">

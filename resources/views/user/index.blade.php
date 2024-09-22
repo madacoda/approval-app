@@ -39,9 +39,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $d)
+                                @foreach ($data as $key => $d)
                                     <tr>
-                                        <th>{{ $loop->iteration }}</th>
+                                        <th>{{ $data->firstItem() + $key }}</th>
                                         <td>{{ $d->name }}</td>
                                         <td>{{ $d->email }}</td>
                                         <td class="text-uppercase">{{ $d->role->name ?? '-' }}</td>

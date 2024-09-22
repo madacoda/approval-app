@@ -39,9 +39,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $d)
+                                @foreach ($data as $key => $d)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <th>{{ $data->firstItem() + $key }}</th>
                                         <td>{{ $d->name }}</td>
                                         <td>{{ $d->description ?? '-' }}</td>
                                         <td>{{ $d->createdBy->name ?? '-' }}</td>

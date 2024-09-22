@@ -41,6 +41,15 @@ Route::middleware(['auth:web'])->group(function () {
             Route::post('/{id}', [App\Http\Controllers\ApprovalCategoryController::class, 'update'])->name('approval-category.update');
             Route::delete('/{id}', [App\Http\Controllers\ApprovalCategoryController::class, 'destroy'])->name('approval-category.delete');
         });
+
+        Route::group(['prefix' => 'unit'], function () {
+            Route::get('/', [App\Http\Controllers\UnitController::class, 'index'])->name('unit.index');
+            Route::get('/form', [App\Http\Controllers\UnitController::class, 'create'])->name('unit.create');
+            Route::post('/', [App\Http\Controllers\UnitController::class, 'store'])->name('unit.store');
+            Route::get('/form/{id}', [App\Http\Controllers\UnitController::class, 'edit'])->name('unit.edit');
+            Route::post('/{id}', [App\Http\Controllers\UnitController::class, 'update'])->name('unit.update');
+            Route::delete('/{id}', [App\Http\Controllers\UnitController::class, 'destroy'])->name('unit.delete');
+        });
     });
     
     Route::group(['prefix' => 'user'], function () {

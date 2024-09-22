@@ -22,36 +22,20 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('master.job-position.create') }}">
-                            <div class="btn btn-primary float-end"><i class="fa fa-plus-square"></i> Create</div>
-                        </a>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Created By</th>
-                                    <th scope="col">Updated By</th>
-                                    <th class="text-center">Action</th>
+                                    <th width="10px">#</th>
+                                    <th>Unit</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $d)
+                                @foreach ($data as $key => $d)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $d->name }}</td>
-                                        <td>{{ $d->description ?? '-' }}</td>
-                                        <td>{{ $d->createdBy->name ?? '-' }}</td>
-                                        <td>{{ $d->updatedBy->name ?? '-' }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('master.job-position.edit', ['id' => $d->id]) }}">
-                                                <button class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</button>
-                                            </a>
-                                            <x-forms.actions.delete :url="route('master.job-position.delete', $d->id)" :id="$d->id" />
-                                        </td>
+                                        <th>{{ $data->firstItem() + $key }}</th>
+                                        <td>{{ $d->subdistrict }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
