@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Master\Subdistrict;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubdistrictSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class SubdistrictSeeder extends Seeder
         }
         fclose($fileCsv);
 
+        DB::unprepared('SET IDENTITY_INSERT subdistricts ON');
         foreach($datas as $data) {
             $input['id'] = $data[0];
             $input['state'] = $data[1];
@@ -32,5 +34,6 @@ class SubdistrictSeeder extends Seeder
 
             Subdistrict::updateOrCreate($input);
         }
+        DB::unprepared('SET IDENTITY_INSERT subdistricts OFF');
     }
 }

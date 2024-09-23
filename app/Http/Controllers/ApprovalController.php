@@ -190,9 +190,9 @@ class ApprovalController extends Controller
         ]);
         $approval_workflow->save();
 
-        $approval = Approval::find($id);
-        $approval->status = $request->status;
-        $approval->save();
+        // $approval = Approval::find($id);
+        // $approval->status = $request->status;
+        // $approval->save();
         DB::commit();
 
         return redirect()->route('approval.show', $id)->with([

@@ -129,6 +129,8 @@ class UserSeeder extends Seeder
             ]
         ];
 
+        DB::statement('SET IDENTITY_INSERT roles ON');
+
         DB::beginTransaction();
         foreach ($users as $key => $user) {
             $userDB = User::updateOrCreate([
@@ -154,5 +156,7 @@ class UserSeeder extends Seeder
             ]);
         }
         DB::commit();
+        
+        DB::statement('SET IDENTITY_INSERT roles OFF');
     }
 }

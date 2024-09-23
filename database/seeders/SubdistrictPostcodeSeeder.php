@@ -6,6 +6,7 @@ use App\Models\Master\Subdistrict;
 use App\Models\Master\SubdistrictPostcode;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubdistrictPostcodeSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class SubdistrictPostcodeSeeder extends Seeder
         }
         fclose($fileCsv);
 
+        DB::unprepared('SET IDENTITY_INSERT subdistrict_postcodes ON');
         foreach($datas as $data) {
             $input['id']             = $data[0];
             $input['subdistrict_id'] = $data[1];
@@ -35,5 +37,6 @@ class SubdistrictPostcodeSeeder extends Seeder
             }
             SubdistrictPostcode::updateOrCreate($input);
         }
+        DB::unprepared('SET IDENTITY_INSERT subdistrict_postcodes OFF');
     }
 }

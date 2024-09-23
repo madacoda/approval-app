@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Master\ApprovalCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ApprovalCategorySeeder extends Seeder
 {
@@ -34,10 +35,12 @@ class ApprovalCategorySeeder extends Seeder
             ]
         ];
 
+        DB::unprepared('SET IDENTITY_INSERT approval_categories ON');
         foreach ($approval_categories as $key => $approval_category) {
             ApprovalCategory::updateOrCreate([
                 'id' => $key + 1,
             ], $approval_category);
         }
+        DB::unprepared('SET IDENTITY_INSERT approval_categories OFF');
     }
 }

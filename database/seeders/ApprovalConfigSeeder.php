@@ -20,6 +20,7 @@ class ApprovalConfigSeeder extends Seeder
     {
         DB::beginTransaction();
         
+        DB::unprepared('SET IDENTITY_INSERT approval_configs ON');
         ApprovalConfig::updateOrCreate([
             'id' => 1
         ], [
@@ -28,12 +29,14 @@ class ApprovalConfigSeeder extends Seeder
             'module'      => 'approval',
             'is_active'   => 1,
         ]);
+        DB::unprepared('SET IDENTITY_INSERT approval_configs OFF');
 
         $kab   = User::where('email', 'kab@madacoda.dev')->first();
         $msu   = User::where('email', 'msu@madacoda.dev')->first();
         $pinca = User::where('email', 'pinca@madacoda.dev')->first();
         $sdm   = User::where('email', 'sdm@madacoda.dev')->first();
-        
+
+        DB::unprepared('SET IDENTITY_INSERT approval_config_details ON');
         ApprovalConfigDetail::updateOrCreate([
             'id' => 1
         ], [
@@ -60,6 +63,7 @@ class ApprovalConfigSeeder extends Seeder
             'module'             => 'user',
             'module_id'          => $sdm->id,
         ]);
+        DB::unprepared('SET IDENTITY_INSERT approval_config_details OFF');
 
         DB::commit();
     }
